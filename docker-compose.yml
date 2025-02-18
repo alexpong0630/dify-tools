@@ -2,12 +2,8 @@ version: '3.8'
 
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: dify-tools
     ports:
-      - "8100:8000"
-    volumes:
-      - .:/app
+      - "8000:8000"
     environment:
       - PYTHONUNBUFFERED=1
