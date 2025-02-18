@@ -1,0 +1,750 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: form rec6
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: b1d4963c-f178-460a-b40f-0cf8244a9115
+    name: qwenvl_addr
+    selector:
+    - env
+    - qwenvl_addr
+    value: http://192.168.1.27:8000/v1/chat/completions
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions: []
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1737443244258-source-answer-target
+      source: '1737443244258'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1737361371620-source-1738772796358-target
+      source: '1737361371620'
+      sourceHandle: source
+      target: '1738772796358'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1738772920296-true-1737443244258-target
+      source: '1738772920296'
+      sourceHandle: 'true'
+      target: '1737443244258'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1738772920296-false-answer-target
+      source: '1738772920296'
+      sourceHandle: 'false'
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1738772796358-source-17387732695080-target
+      source: '1738772796358'
+      sourceHandle: source
+      target: '17387732695080'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: if-else
+      id: 17387732695080-source-1738772920296-target
+      source: '17387732695080'
+      sourceHandle: source
+      target: '1738772920296'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1738986169254-source-1738986397924-target
+      source: '1738986169254'
+      sourceHandle: source
+      target: '1738986397924'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1738986397924-source-1737361371620-target
+      source: '1738986397924'
+      sourceHandle: source
+      target: '1737361371620'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1738894198985-source-1738986169254-target
+      source: '1738894198985'
+      sourceHandle: source
+      target: '1738986169254'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1738894266959-source-1738986169254-target
+      source: '1738894266959'
+      sourceHandle: source
+      target: '1738986169254'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: tool
+      id: 1737344079027-source-1739505175702-target
+      source: '1737344079027'
+      sourceHandle: source
+      target: '1739505175702'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 1739505175702-source-1738894198985-target
+      source: '1739505175702'
+      sourceHandle: source
+      target: '1738894198985'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 1739505175702-source-1738894266959-target
+      source: '1739505175702'
+      sourceHandle: source
+      target: '1738894266959'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          label: file
+          max_length: 5
+          options: []
+          required: true
+          type: file
+          variable: file
+      height: 90
+      id: '1737344079027'
+      position:
+        x: -219.35079131222716
+        y: 294.6356819049674
+      positionAbsolute:
+        x: -219.35079131222716
+        y: 294.6356819049674
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.1
+          mode: chat
+          name: Benasd/Qwen2.5-VL-7B-Instruct-AWQ
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 143cfe7e-d504-42ae-8a39-eaa84cac58e1
+          role: system
+          text: extract all content from the image to markdown
+        selected: false
+        title: OCR (QWENVL_3B)
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1739505175702'
+            - files
+          enabled: true
+      height: 98
+      id: '1738894198985'
+      position:
+        x: 708.7174588749259
+        y: 287.44609506499114
+      positionAbsolute:
+        x: 708.7174588749259
+        y: 287.44609506499114
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1737361371620.text#}}
+
+
+          ===== Get Address ========
+
+          {{#1738986397924.result#}}
+
+
+          =====Parse Address LLM====
+
+          {{#1737443244258.text#}}
+
+          '
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 170
+      id: answer
+      position:
+        x: 3839.935131356242
+        y: 461.1969433795376
+      positionAbsolute:
+        x: 3839.935131356242
+        y: 461.1969433795376
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.5
+          mode: chat
+          name: deepseek-r1:14b
+          provider: ollama
+        prompt_template:
+        - id: 39fdc302-33fc-4e8a-ad20-e31f7cc02571
+          role: system
+          text: 'You are form classifier. Make a final inference and provide reasoning.
+
+            Conditions:
+
+            1. form_type must be one of the following:
+
+            Water bill / Electricity bill / Gas bill / Document issued by a hospital
+            / Document issued by a banking institution / Document issued by a public
+            organization / Document issued by a government department / Other types
+            of documents
+
+
+            2. If the document is incomplete or it cannot be determined whether it
+            is complete or it does not have an address, form_type must be inferred
+            as "Other types of documents";
+
+
+            3. If the content is not a letter/bill, form_type must be inferred as
+            "Other types of documents";
+
+
+            Output json format: {"form_type":"","issued_from_hk":false,"reason_of_classification":""}
+
+            '
+        - id: 16cb30d3-f1f9-4d13-b34d-7c34a826d475
+          role: user
+          text: 'OCR Result:
+
+            {{#1738894198985.text#}}
+
+            Recipient Address:
+
+            {{#1738986397924.result#}}'
+        selected: false
+        title: Form Classification  (R1 Qwen 14B)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1737361371620'
+      position:
+        x: 1987.1465724358186
+        y: 304.9739670999407
+      positionAbsolute:
+        x: 1987.1465724358186
+        y: 304.9739670999407
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.5
+          mode: chat
+          name: deepseek-r1:14b
+          provider: ollama
+        prompt_template:
+        - id: 86fd0993-5276-4996-a4c0-2eff771dbed0
+          role: system
+          text: 'The task is to convert the given recipient address into a json with
+            below properties
+
+            - Unit (Unit/flat/room of the floor; not company name; not floor number;
+            not building; not person name)
+
+            - Floor (Example: 7/F)
+
+            - Building/block (Example: Ping On Building)
+
+            - Estate (Example: Ping On Est.)
+
+            - Street No (Example: 9)
+
+            - Street (Example: Ping On Road)
+
+            - District (Example: Wan Chai)
+
+            - Region (Example: Hong Kong)
+
+
+            ###constraints
+
+            - leave the property empty if the provided address cannot be mapped to
+            the property
+
+            - do not generate ouput based on assumeed value. You must convert address
+            based on provided information
+
+            - 不要提供地址示例
+
+            - 不可假设地址'
+        - id: 918fb645-1904-4460-b792-e4ba6ca74722
+          role: user
+          text: '{{#1738986397924.result#}}'
+        selected: false
+        title: Parse Address   (R1 Qwen 14B)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1737443244258'
+      position:
+        x: 3508.143017707499
+        y: 282.23821860228475
+      positionAbsolute:
+        x: 3508.143017707499
+        y: 282.23821860228475
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: Benasd/Qwen2.5-VL-7B-Instruct-AWQ
+          provider: openai_api_compatible
+        prompt_template:
+        - id: 528b93a7-dee5-4496-aef9-762d71355bdb
+          role: system
+          text: 'As a professional logistics address parsing assistant, please extract
+            the recipient''s address and name from the provided image.
+
+            Requirements:
+
+            1. Ignore any text in the image that is not related to the address (such
+            as advertisements, icons, sender information);
+
+            2. Exclude irrelevant addresses such as service addresses, power supply
+            addresses, etc.;
+
+            3. Locate the recipient''s block: the recipient''s address usually appears
+            in the area before/after the recipient''s name;
+
+            4. Do not assume any address information that does not appear in the image;
+
+            5. The output should be the address and should have the basic structure
+            of an address, such as street name.
+
+
+            Hints:
+
+            - the font size of recipient address may be larger than other addresses
+
+            - recipient address usually be found on left top corner'
+        selected: false
+        title: Get Address  (QWENVL_3B)
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1739505175702'
+            - files
+          enabled: true
+      height: 98
+      id: '1738894266959'
+      position:
+        x: 708.7174588749259
+        y: 461.1969433795376
+      positionAbsolute:
+        x: 708.7174588749259
+        y: 461.1969433795376
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-r1:14b
+          provider: ollama
+        prompt_template:
+        - id: 5f1b8608-7df4-4317-b4fd-c7e918bba189
+          role: system
+          text: '<information>
+
+            {{#1738986397924.result#}}
+
+            </information>
+
+            Does the provided information mention a recipient address?
+
+            If yes, output "yes";
+
+            If no, output "no".'
+        selected: false
+        title: Address Found? (R1 Qwen 14B)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1738772796358'
+      position:
+        x: 2315.789227671675
+        y: 294.6356819049674
+      positionAbsolute:
+        x: 2315.789227671675
+        y: 294.6356819049674
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: e47fc2ce-9a9b-4383-9cbb-aef616cf7564
+            value: 'yes'
+            varType: string
+            variable_selector:
+            - '17387732695080'
+            - result
+          - comparison_operator: contains
+            id: 15848919-1da8-4927-9275-5f5c515dd2ab
+            value: 'Yes'
+            varType: string
+            variable_selector:
+            - '17387732695080'
+            - result
+          - comparison_operator: contains
+            id: 864c97d2-9cd5-4b1f-bd5d-6f15dd683aa2
+            value: 'YES'
+            varType: string
+            variable_selector:
+            - '17387732695080'
+            - result
+          id: 'true'
+          logical_operator: or
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 178
+      id: '1738772920296'
+      position:
+        x: 3129.869957268473
+        y: 294.6356819049674
+      positionAbsolute:
+        x: 3129.869957268473
+        y: 294.6356819049674
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nimport re\ndef main(arg1: str) -> dict:\n    return {\n        \"\
+          result\": re.sub(r'<think>.*?</think>', '', arg1, flags=re.DOTALL)\n   \
+          \ }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Remove think tag (Address Found)
+        type: code
+        variables:
+        - value_selector:
+          - '1738772796358'
+          - text
+          variable: arg1
+      height: 54
+      id: '17387732695080'
+      position:
+        x: 2695.326076483195
+        y: 304.9739670999407
+      positionAbsolute:
+        x: 2695.326076483195
+        y: 304.9739670999407
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.5
+          mode: chat
+          name: deepseek-r1:14b
+          provider: ollama
+        prompt_template:
+        - id: 89d4ded8-2456-4f8e-92e9-771a10249d14
+          role: system
+          text: 'provide correct recipient address and name from provided two sources
+            conversation
+
+
+            Hints:
+
+            - Focus on "recipient address".Exclude irrelevant addresses such as service
+            addresses, power supply addresses, etc.;
+
+            - if two source receipient address appear partial different, consolidate
+            the receipient address
+
+            - if there are two receipient addresses, consider which one is more likely
+            as "recipient address"
+
+            '
+        - id: 490c8a42-ca7a-40d4-8d10-5973d971ac55
+          role: user
+          text: '<source1>
+
+            {{#1738894198985.text#}}
+
+            </source1>
+
+            <source2>
+
+            {{#1738894266959.text#}}
+
+            </source2>'
+        selected: false
+        title: Consolidate Address
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1738986169254'
+      position:
+        x: 1270.0887592191775
+        y: 294.6356819049674
+      positionAbsolute:
+        x: 1270.0887592191775
+        y: 294.6356819049674
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nimport re\ndef main(arg1: str) -> dict:\n    return {\n        \"\
+          result\": re.sub(r'<think>.*?</think>', '', arg1, flags=re.DOTALL)\n   \
+          \ }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Remove think tag (Address)
+        type: code
+        variables:
+        - value_selector:
+          - '1738986169254'
+          - text
+          variable: arg1
+      height: 54
+      id: '1738986397924'
+      position:
+        x: 1610.1026267622458
+        y: 304.9739670999407
+      positionAbsolute:
+        x: 1610.1026267622458
+        y: 304.9739670999407
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: 8e5db159-0580-4b5e-8f81-197489c2fba1
+        provider_name: ImageResize
+        provider_type: workflow
+        selected: false
+        title: ImageResize
+        tool_configurations: {}
+        tool_label: ImageResize
+        tool_name: ImageResize
+        tool_parameters:
+          file:
+            type: variable
+            value:
+            - '1737344079027'
+            - file
+          max_width_height:
+            type: constant
+            value: 1600
+        type: tool
+      height: 54
+      id: '1739505175702'
+      position:
+        x: 213.628467871204
+        y: 325.95543324524033
+      positionAbsolute:
+        x: 213.628467871204
+        y: 325.95543324524033
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -912.9023738968044
+      y: 24.144406185362584
+      zoom: 0.6597539553864473
