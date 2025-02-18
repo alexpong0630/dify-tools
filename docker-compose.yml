@@ -1,9 +1,18 @@
 version: '3.8'
 
+networks:
+  docker_default:
+    external: true
+
 services:
   app:
+    container_name: dify-tools
     image: dify-tools
     ports:
-      - "8000:8000"
+      - "8100:8000"
     environment:
       - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/app
+    networks:
+      - docker_default
