@@ -49,4 +49,12 @@ async def agent_proxy(callRequest:CallRequest):
     }
 
     response = requests.post(callRequest.agent_host, json=json_body, headers=headers)
-    return response.text
+    arg1 = response.text
+    arg1 = arg1.replace("event: ping\n\n", "")
+    arg1 = arg1.replace("data: ", ",")
+    arg1 = arg1.replace(",", "", 1)  # 只替換第一次出現的逗號
+    arg1 = '[' + arg1 + ']'
+    
+    events = json.loads(arg1)
+    last29_items = events[-29:]  # 取最後29個項目
+    return last29_items
