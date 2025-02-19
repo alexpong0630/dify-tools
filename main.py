@@ -22,6 +22,3 @@ async def upload_image(max_size:int, file: UploadFile = File(...)):
 
     return StreamingResponse(img_byte_arr, media_type="image/png")
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="debug")
