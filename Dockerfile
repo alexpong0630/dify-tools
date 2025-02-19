@@ -4,12 +4,6 @@ FROM python:3.9-slim
 # 設定工作目錄
 WORKDIR /app
 
-# 複製當前目錄的內容到容器的 /app 目錄
-COPY . .
-
-# 安裝所需的依賴（如果有 requirements.txt，則可以取消註解）
-# RUN pip install --no-cache-dir -r requirements.txt
-
 # 安裝所需的依賴
 RUN pip install --no-cache-dir -r requirements.txt
 
