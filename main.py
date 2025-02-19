@@ -56,5 +56,5 @@ async def agent_proxy(callRequest:CallRequest):
     arg1 = '[' + arg1 + ']'
     
     events = json.loads(arg1)
-    last29_items = events[-29:]  # 取最後29個項目
+    last29_items = events[-3:]  # 取最後29個項目
     return last29_items
