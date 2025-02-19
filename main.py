@@ -57,4 +57,6 @@ async def agent_proxy(callRequest:CallRequest):
     
     events = json.loads(arg1)
     last29_items = events[-3:]  # 取最後29個項目
+    for item in last29_items:
+        item.pop("metadata", None)  # 移除 metadata 屬性（如果存在）
     return last29_items
