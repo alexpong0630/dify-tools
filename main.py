@@ -2,6 +2,16 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import StreamingResponse
 from PIL import Image
 import io
+import requests
+import json
+from pydantic import BaseModel
+
+
+class CallRequest(BaseModel):
+    query: str
+    agent_token: str
+    userid: str
+    agent_host: str
 
 app = FastAPI()
 
@@ -22,3 +32,21 @@ async def upload_image(max_size:int, file: UploadFile = File(...)):
 
     return StreamingResponse(img_byte_arr, media_type="image/png")
 
+@app.post("/agent-proxy")
+async def agent_proxy(callRequest:CallRequest):
+    json_body = {
+        "inputs": {},
+        "query": callRequest.query,
+        "response_mode": "streaming",
+        "conversation_id": "",
+        "user": callRequest.userid,
+        "files": []
+    }
+
+    headers = {
+        "Authorization": f"Bearer {callRequest.agent_token}",
+        "Content-Type":  "application/json"
+    }
+
+    response = requests.post(callRequest.agent_host, json=json_body, headers=headers)
+    return response.text
