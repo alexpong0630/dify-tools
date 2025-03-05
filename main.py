@@ -5,7 +5,7 @@ import io
 import requests
 import json
 from pydantic import BaseModel
-
+import os
 
 class CallRequest(BaseModel):
     query: str
@@ -60,3 +60,17 @@ async def agent_proxy(callRequest:CallRequest):
     for item in last29_items:
         item.pop("metadata", None)  # 移除 metadata 屬性（如果存在）
     return last29_items
+
+@app.get("/search",summary="search engine",
+    description="categories available options: general, images,news,vidoes, map, files")
+async def search(q: str, categories: str = "general"):
+    page_size = int(os.environ.get("PAGE_SIZE", "10"))
+    searxng_endpoint = os.environ.get("SEARXNG_ENDPOINT", "http://192.168.1.15:8277")
+    search_result_format = os.environ.get("SEARCH_RESULT_FORMAT", "json")
+
+    url = f"{searxng_endpoint}?q={q}&format={search_result_format}&categories={categories}"
+    print(url)
+    response = requests.get(url)
+    results = response.json()
+
+    return results["results"][:page_size]
